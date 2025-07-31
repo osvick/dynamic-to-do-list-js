@@ -20,17 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
     li.textContent = taskText;
 
     // Create a remove button
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.className = "remove-btn";
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.className = "remove-btn";
 
     // Assign remove behavior
-    removeButton.onclick = function () {
+    removeBtn.onclick = function () {
       taskList.removeChild(li);
     };
 
     // Append button to li, and li to task list
-    li.appendChild(removeButton);
+    li.appendChild(removeBtn);
     taskList.appendChild(li);
 
     // Clear input field
