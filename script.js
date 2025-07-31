@@ -1,6 +1,5 @@
-// Ensure the DOM is fully loaded before running the script
 document.addEventListener("DOMContentLoaded", function () {
-  // Select necessary DOM elements
+  // Select DOM elements
   const addButton = document.getElementById("add-task-btn");
   const taskInput = document.getElementById("task-input");
   const taskList = document.getElementById("task-list");
@@ -9,44 +8,41 @@ document.addEventListener("DOMContentLoaded", function () {
   function addTask() {
     const taskText = taskInput.value.trim();
 
-    // Check if input is empty
+    // Check if task is empty
     if (taskText === "") {
       alert("Please enter a task.");
       return;
     }
 
-    // Create a list item and set its text content
-    const listItem = document.createElement("li");
-    listItem.textContent = taskText;
+    // Create new <li> element and set its text
+    const li = document.createElement("li");
+    li.textContent = taskText;
 
-    // Create a remove button for the task
+    // Create "Remove" button and assign class
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
     removeBtn.className = "remove-btn";
 
-    // Set onclick event to remove the task
+    // Remove task on button click
     removeBtn.onclick = function () {
-      taskList.removeChild(listItem);
+      taskList.removeChild(li);
     };
 
-    // Append the remove button and then the list item
-    listItem.appendChild(removeBtn);
-    taskList.appendChild(listItem);
+    // Append button to li, then li to list
+    li.appendChild(removeBtn);
+    taskList.appendChild(li);
 
-    // Clear the input field
+    // Clear input field
     taskInput.value = "";
   }
 
-  // Attach click event to "Add-Task-button
+  // Add task on button click
   addButton.addEventListener("click", addTask);
 
-  // Attach keypress event to allow "Enter" key to add task
+  // Add task on Enter keypress
   taskInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
       addTask();
     }
   });
-
-  // Optionally call addTask initially if needed (e.g., preload default tasks)
-  // addTask();  // Not typically required unless preloading
 });
